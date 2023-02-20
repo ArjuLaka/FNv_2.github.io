@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>Game Fisika</title>
+  <link rel="icon" type="image/x-icon" href="./assets/fnlogo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://kit.fontawesome.com/dae26ded9d.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<section class="navigation">
+  <div class="nav-container">
+    <div class="brand">
+      <a href="../index.html">Frenzy</br>Network</a>
+    </div>
+    <nav>
+      <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
+      <ul class="nav-list">
+        <li>
+          <a href="../index.html">Beranda</a>
+        </li>
+        <li>
+          <a href="#!">Pencarian</a>
+        </li>
+        <li>
+          <a href="#!">Konten</a>
+          <ul class="nav-dropdown">
+            <li>
+              <a href="#!">Materi & Rangkuman</a>
+            </li>
+            <li>
+              <a href="#!">Latihan Soal</a>
+            </li>
+            <li>
+              <a href="index.html">Game & Quiz</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#!">Tentang</a>
+        </li>
+        <li>
+          <a href="#!">Masuk / Daftar</a>
+          <ul class="nav-dropdown">
+            <li>
+              <a href="#!">Masuk</a>
+            </li>
+            <li>
+              <a href="#!">Daftar dengan email</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#!">Pengaturan</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</section>
+<section class="parent-main">
+  <div class="timer">
+    <div class="title-timer">
+      <p>TIMER</p>
+    </div>
+    <div class="value-timer">
+      <p>TIMER VALUE</p>
+    </div>
+  </div>
+  <div class="score">
+    <div class="title-score">
+      <p>SCORE</p>
+    </div>
+    <div class="value-score" id="value-score">
+      <p>SCORE VALUE</p>
+    </div>
+  </div>
+  <div class="pertanyaan">
+    <div class="judul">
+      <p id="bab">Klik spin untuk memulai</p>
+    </div>
+    <div class="soal" id="soal">
+      <p>Klik Spin Untuk Memulai</p>
+    </div>
+    <div class="jawaban">
+      <span>
+        <input type="radio" id="option-one" name="option" class="radio" value="optionA" />
+        <label for="option-one" class="option" id="option-one-label"></label>
+      </span>
+      <span>
+        <input type="radio" id="option-two" name="option" class="radio" value="optionB" />
+        <label for="option-two" class="option" id="option-two-label"></label>
+         </span>
+         <span>
+           <input type="radio" id="option-three" name="option" class="radio" value="optionC" />
+           <label for="option-three" class="option" id="option-three-label"></label>
+         </span>
+         <span>
+           <input type="radio" id="option-four" name="option" class="radio" value="optionD" />
+           <label for="option-four" class="option" id="option-four-label"></label>
+         </span>
+    </div>
+  </div>
+  <main class="main-container">
+    <div class="container">
+        <canvas id="wheel"></canvas>
+        <button id="spin-btn">Spin</button>
+        <img src="spinner-arrow-.svg" alt="spinner-arrow" />
+        <div id="final-value">
+          <p>Klik spin untuk memulai</p>
+        </div>
+     </div>
+  </main>
+</section>
+<section class="parent-footer">
+  <footer class="footer-container">
+    <div class="medsos-icon">
+      <a href="#"><i class="fa-brands fa-twitter"></i></a>
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#"><i class="fa-brands fa-youtube"></i></a>
+      <a href="#"><i class="fa-brands fa-facebook"></i></a>
+      <a href="#"><i class="fa-brands fa-twitch"></i></a>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#">Tentang Kami</a></li>
+      <li><a href="#">Kebijakan Pribadi</a></li>
+      <li><a href="#">Syarat dan Ketentuan</a></li>
+      <li><a href="#">Hubungi Kami</a></li>
+      <li><a href="#">Saran dan Masukan</a></li>
+    </ul>
+    <div class="subscribe-form">
+      <p>Jangan lewatkan berita terbaru dari kami, dengan mengisi formulir di bawah ini.</p>
+      <form action="#">
+        <input type="text" placeholder="Alamat Email">
+        <button type="submit" value="submit"><i class="fab fa-telegram-plane"></i></button>
+      </form>
+    </div>
+    <div class="copyright">
+      <p>© 2023 FrenzyNetwork - All Rights Reserved.</p>
+    </div>
+  </footer>
+</section>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<!-- Chart JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+<!-- Chart JS Plugin for displaying text over chart -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.1.0/chartjs-plugin-datalabels.min.js"></script>
+  <script  src="./script.js"></script>
+
+</body>
+</html>
