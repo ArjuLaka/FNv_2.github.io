@@ -401,9 +401,39 @@ input[type="radio"]:checked+label {
   cursor: pointer;
 }
 
+.disclaimer {
+  width: 90%;
+  height: 350px;
+  background-color: #262626;
+  border: 3px solid white;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  border-radius: 1em;
+  box-shadow: 0 4em 5em rgba(27, 8, 53, 0.2);
+  text-align: center;
+  z-index: 12;
+  color: white;
+  position: fixed;
+  display: block;
+  overflow-y: auto;
+  padding: 5px 10px;
+}
+
+.disclaimer h2 {
+  text-align: left;
+  font-family: fantasy;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.disclaimer p {
+  text-align: left;
+}
+
 #overlay {
   position: fixed;
-  display: none;
+  display: block;
   width: 100%;
   height: 100%;
   top: 0;
