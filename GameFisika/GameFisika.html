@@ -74,7 +74,7 @@
       <p>SCORE</p>
     </div>
     <div class="value-score" id="value-score">
-      <p>SCORE VALUE</p>
+      <p></p>
     </div>
   </div>
   <div class="pertanyaan">
@@ -85,24 +85,35 @@
       <p>Klik Spin Untuk Memulai</p>
     </div>
     <div class="jawaban">
-      <span>
+      <span id="pilihanA" onclick="aktifA()">
         <input type="radio" id="option-one" name="option" class="radio" value="optionA" />
         <label for="option-one" class="option" id="option-one-label"></label>
       </span>
-      <span>
+      <span id="pilihanB" onclick="aktifB()">
         <input type="radio" id="option-two" name="option" class="radio" value="optionB" />
         <label for="option-two" class="option" id="option-two-label"></label>
          </span>
-         <span>
+         <span id="pilihanC" onclick="aktifC()">
            <input type="radio" id="option-three" name="option" class="radio" value="optionC" />
            <label for="option-three" class="option" id="option-three-label"></label>
          </span>
-         <span>
+         <span id="pilihanD" onclick="aktifD()">
            <input type="radio" id="option-four" name="option" class="radio" value="optionD" />
            <label for="option-four" class="option" id="option-four-label"></label>
          </span>
+         <div class="kirim-jawaban">
+           <button class="skip">Skip</button>
+           <button class="kirim" onclick="cekJawaban()">Konfirmasi</button>
+         </div>
     </div>
   </div>
+  <div class="option-modal" id="option-modal">
+    <h2>Silahkan pilih jawaban terlebih dahulu untuk melanjutkan</h2>
+    <div class="modal-button-container">
+      <button onclick="tutupModal()">OKEY!</button>
+    </div>
+  </div>
+  <div id="overlay"></div>
   <main class="main-container">
     <div class="container">
         <canvas id="wheel"></canvas>
