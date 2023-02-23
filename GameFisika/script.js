@@ -362,13 +362,20 @@ kirimBtn.addEventListener('click', () => {
 
 }*/
 
-
+/*function bukaDisclimer(){
+  document.getElementById('disclaimer').style.display = "block";
+  document.getElementById('overlay').style.display = "block";
+}*/
 
 function tutupModal(){
   document.getElementById('option-modal').style.display = "none";
   document.getElementById('overlay').style.display = "none";
 }
 
+function tutupDisclaimer(){
+  document.getElementById('disclaimer').style.display = "none";
+  document.getElementById('overlay').style.display = "none";
+}
 
 const radioA = document.getElementById('option-one')
 const radioB = document.getElementById('option-two')
@@ -437,3 +444,4 @@ spinBtn.addEventListener("click", () => {
     }
   }, 10);
 });
+
