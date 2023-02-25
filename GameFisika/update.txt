@@ -1,2 +1,11 @@
 //20 Feb 2023//
-+GameFisika 1.0
++GameFisika 1.0:
+  -First Release
+
+
+
+//23 Feb 2023//
++GameFisika 1.1:
+  -Bug Fixed
+  -Add player's score
+  -Minor changes on Answers container
