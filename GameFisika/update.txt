@@ -9,3 +9,4 @@
   -Bug Fixed
   -Add player's score
   -Minor changes on Answers container
+  -Add Start pop-up modal
