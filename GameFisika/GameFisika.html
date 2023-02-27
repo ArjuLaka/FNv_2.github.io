@@ -65,8 +65,8 @@
     <div class="title-timer">
       <p>TIMER</p>
     </div>
-    <div class="value-timer">
-      <p>TIMER VALUE</p>
+    <div class="value-timer" id="value-timer">
+      <p> </p>
     </div>
   </div>
   <div class="score">
@@ -92,6 +92,9 @@
          <div class="kirim-jawaban">
            <button class="skip">Skip</button>
            <button id="kirim" class="kirim" >Konfirmasi</button>
+         </div>
+         <div class="jawaban-indicator" id="jawaban-indicator">
+             <p></p>
          </div>
     </div>
   </div>
@@ -124,6 +127,14 @@
     </p>
     <div class="modal-button-container">
       <button onclick="tutupDisclaimer()">Tutup</button>
+    </div>
+  </div>
+  <div class="hasil-modal" id="hasil-modal">
+    <h1>Waktu Habis</h1>
+    <h2>Skor Akhir:</h2>
+    <h1 id="hasil-value"></h1>
+    <div class="modal-button-container">
+      <button onclick="tutupHasil()">Tutup</button>
     </div>
   </div>
   <main class="main-container">
