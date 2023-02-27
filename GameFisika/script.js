@@ -1,26 +1,21 @@
-(function($) { // Begin jQuery
-  $(function() { // DOM ready
-    // If a link has a dropdown, add sub menu toggle.
+(function($) {
+  $(function() {
     $('nav ul li a:not(:only-child)').click(function(e) {
       $(this).siblings('.nav-dropdown').toggle();
-      // Close one dropdown when selecting another
       $('.nav-dropdown').not($(this).siblings()).hide();
       e.stopPropagation();
     });
-    // Clicking away from dropdown will remove the dropdown class
     $('html').click(function() {
       $('.nav-dropdown').hide();
     });
-    // Toggle open and close nav styles on click
     $('#nav-toggle').click(function() {
       $('nav ul').slideToggle();
     });
-    // Hamburger to X toggle
     $('#nav-toggle').on('click', function() {
       this.classList.toggle('active');
     });
-  }); // end DOM ready
-})(jQuery); // end jQuery
+  });
+})(jQuery);
 
 const wheel = document.getElementById("wheel");
 const spinBtn = document.getElementById("spin-btn");
@@ -54,7 +49,7 @@ let myChart = new Chart(wheel, {
   type: "pie",
   data: {
     //Labels(values which are to be displayed on chart)
-    labels: ["TD", "GM", "TGK", "GB", "SDK", "PU"],
+    labels: ["TD", "GM", "TKG", "GB", "SDK", "PU"],
     //Settings for dataset/pie
     datasets: [
       {
@@ -172,7 +167,7 @@ const teoriKinetikGas = [
     correctOption: "optionA"
   },
     {
-    question: "Tekanan suatu gas yang volumenya 3 m3 yang berada dalam sebuah bejana tertutup (tidak bocor) dijaga tetap. Suhu mutlak awalnya yakni 100 K, namun apabila volumenya dirubah menjadi 6 m3, maka hitunglah besar suhu mutlaknya!",
+    question: "Tekanan suatu gas yang volumenya 3 m³ yang berada dalam sebuah bejana tertutup (tidak bocor) dijaga tetap. Suhu mutlak awalnya yakni 100 K, namun apabila volumenya dirubah menjadi 6 m³, maka hitunglah besar suhu mutlaknya!",
     optionA: "100K",
     optionB: "150K",
     optionC: "200K",
@@ -242,6 +237,8 @@ const gelombangBunyi = [
   
 let playerScore = 0
 let currentquestion = 0
+let spinnerActive = true
+let kesempatanSkip = 3
   
 const kirimBab = document.getElementById('bab');
 const kirimsoal = document.getElementById('soal');
@@ -249,10 +246,31 @@ const pilihanA = document.getElementById('option-one-label');
 const pilihanB = document.getElementById('option-two-label');
 const pilihanC = document.getElementById('option-three-label');
 const pilihanD = document.getElementById('option-four-label');
-const options = document.getElementsByClassName('radio')
+const options = document.getElementsByClassName('radio');
+const jawabanIndicator = document.getElementById('jawaban-indicator')
 const scoreContainer = document.getElementById('value-score');
-scoreContainer.innerText = playerScore
+const timerContainer = document.getElementById('value-timer');
+const hasilContainer = document.getElementById('hasil-value')
+scoreContainer.innerText = playerScore;
 let jawabanAkhir;
+
+const startingMinutes = 10;
+let time = startingMinutes * 60;
+
+
+function updateCountdown() {
+  const minutes = Math.floor(time / 60);
+  let seconds = time % 60;
+  
+  seconds = seconds < 10 ? '0' + seconds : seconds;
+  
+  timerContainer.innerText = `${minutes}:${seconds}`;
+  time--;
+  if (time < 0) {
+    bukaHasil()
+  }
+}
+
 
 function updateSoal() {
   if (finalValue.textContent == "Hasil: 1") {
@@ -319,7 +337,7 @@ function updateSoal() {
     pilihanB.innerText = kirimPU[2]
     pilihanC.innerText = kirimPU[3]
     pilihanD.innerText = kirimPU[4]
-    jawabanAkhir = kirimGM[5]
+    jawabanAkhir = kirimPU[5]
     kirimBab.innerText = 'Pengetahuan Umum'
   }
 }
@@ -330,42 +348,34 @@ kirimBtn.addEventListener('click', () => {
   let correctOption = null
 
 
-    for (i = 0; i < options.length; i++) {
+    for (var i = 0; i < options.length; i++) {
       let answerels = options[i];
       if (answerels.checked == true) {
         //CHECK TO SEE IF USER HAS SELECTED AN ANSWER
         //MOVE ON TO NEXT QUESTION
         if (answerels.value == jawabanAkhir) {
-          console.log("That's correct!");
           playerScore+=5;
+          scoreContainer.innerText = playerScore;
+          spinBtn.disabled = false;
+          jawabanIndicator.style.display = "flex";
+          jawabanIndicator.innerText = 'Selamat jawaban kamu benar!';
         } else {
-          console.log(`Sorry, the correct answer is.`);
           playerScore-=2;
+          scoreContainer.innerText = playerScore;
+          spinBtn.disabled = false;
+          jawabanIndicator.style.display = "flex";
+          jawabanIndicator.innerText = 'Maaf jawaban kamu salah.';
         }
-      } else {
+      } else if (options[0].checked === false && options[1].checked === false && options[2].checked === false && options[3].checked === false) {
         document.getElementById('option-modal').style.display = "block";
-        document.getElementById('overlay').style.display = "block";
-        //STOP USER FROM GOING TO NEXT QUESTION WITHOUT SELECTING AN ANSWER
-        // console.log('not checked! :(')
-      }
+        document.getElementById('overlay').style.display = "block";}
     }
 })
 
-
-
-/*if (options[0].checked === false && options[1].checked === false && options[2].checked === false && options[3].checked === false) {
-        document.getElementById('option-modal').style.display = "block";
-        document.getElementById('overlay').style.display = "block";
-    }
-    
-    if (option.checked === true && option.value === jawabanAkhir) { playerScore += 5}
-
-}*/
-
-/*function bukaDisclimer(){
-  document.getElementById('disclaimer').style.display = "block";
-  document.getElementById('overlay').style.display = "block";
-}*/
+function skipBtn() {
+  spinBtn.disabled = false;
+  spinnerActive = true;
+}
 
 function tutupModal(){
   document.getElementById('option-modal').style.display = "none";
@@ -375,6 +385,34 @@ function tutupModal(){
 function tutupDisclaimer(){
   document.getElementById('disclaimer').style.display = "none";
   document.getElementById('overlay').style.display = "none";
+  setInterval(updateCountdown, 1000)
+}
+
+function tutupHasil(){
+  document.getElementById('hasil-modal').style.display = "none";
+  document.getElementById('overlay').style.display = "none";
+}
+
+function bukaHasil() {
+  document.getElementById('hasil-modal').style.display = "block";
+  document.getElementById('overlay').style.display = "block";
+  document.getElementById('hasil-value').innerText = playerScore;
+}
+
+function scrollToQuestion(){
+  window.scrollTo({
+  top: 540,
+  left: 0,
+  behavior: 'smooth'
+  });
+}
+
+function scrollToSpinner(){
+  window.scrollTo({
+  top: 0,
+  left: 0,
+  behavior: 'smooth'
+  });
 }
 
 const radioA = document.getElementById('option-one')
@@ -383,29 +421,16 @@ const radioC = document.getElementById('option-three')
 const radioD = document.getElementById('option-four')
 
 
-
-/*
-function aktifA(){
-  radioA.checked = true;
-}
-function aktifB(){
-  radioB.checked = true;
-}
-function aktifC(){
-  radioC.checked = true;
-}
-function aktifD(){
-  radioD.checked = true;
-}*/
-
 //display value based on the randomAngle
 const valueGenerator = (angleValue) => {
   for (let i of rotationValues) {
     //if the angleValue is between min and max then display it
     if (angleValue >= i.minDegree && angleValue <= i.maxDegree) {
       finalValue.innerHTML = `<p>Hasil: ${i.value}</p>`;
-      spinBtn.disabled = false;
       updateSoal()
+      jawabanIndicator.style.display = "none";
+      setTimeout(scrollToQuestion, 500);
+      spinnerActive = false;
       break;
     }
   }
