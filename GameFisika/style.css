@@ -136,7 +136,7 @@ nav ul li ul li a {
 
 .parent-main {
   width: 100%;
-  height: 160vh;
+  height: 170vh;
   background-color: green;
 }
 
@@ -144,11 +144,12 @@ nav ul li ul li a {
   width: 90%;
   max-width: 34.37em;
   max-height: 90vh;
-  background-color: #ffffff;
+  background-color: pink;
   position: absolute;
   transform: translate(-50%, -50%);
   top: 60%;
   left: 50%;
+  border: 3px solid black;
   border-radius: 1em;
   box-shadow: 0 4em 5em rgba(27, 8, 53, 0.2);
 }
@@ -230,6 +231,12 @@ img {
   font-style: italic;
 }
 
+.value-timer {
+  font-size: 2.7em;
+  font-weight: bold;
+  padding-top: 4px;
+}
+
 .score {
   width: 130px;
   height: 100px;
@@ -258,14 +265,20 @@ img {
   font-style: italic;
 }
 
+.value-score {
+  font-size: 2.7em;
+  font-weight: bold;
+  padding-top: 4px;
+}
+
 .pertanyaan {
   width: 90%;
-  height: 495px;
+  height: 540px;
   background-color: pink;
   border: 3px solid black;
   position: absolute;
   transform: translate(-50%, -50%);
-  top: 130%;
+  top: 135%;
   left: 50%;
   border-radius: 1em;
   box-shadow: 0 4em 5em rgba(27, 8, 53, 0.2);
@@ -355,7 +368,8 @@ input[type="radio"]:checked+label {
 
 .kirim-jawaban {
   display: flex;
-  padding: 10px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   gap: 10px;
 }
 
@@ -401,6 +415,20 @@ input[type="radio"]:checked+label {
   cursor: pointer;
 }
 
+.jawaban-indicator {
+  width: 100%;
+  height: 80px;
+  bottom: 0;
+  background-color: magenta;
+  z-index: 20;
+  position: absolute;
+  padding-left: -30px;
+  border-top: 3px solid black;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
 .disclaimer {
   width: 90%;
   height: 350px;
@@ -429,6 +457,24 @@ input[type="radio"]:checked+label {
 
 .disclaimer p {
   text-align: left;
+}
+
+.hasil-modal {
+  width: 90%;
+  height: 180px;
+  background-color: #262626;
+  border: 3px solid white;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  border-radius: 1em;
+  box-shadow: 0 4em 5em rgba(27, 8, 53, 0.2);
+  text-align: center;
+  z-index: 12;
+  color: white;
+  position: fixed;
+  display: none;
+  line-height: 15px;
 }
 
 #overlay {
