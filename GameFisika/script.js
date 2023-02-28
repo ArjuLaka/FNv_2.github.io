@@ -85,7 +85,7 @@ const pengetahuanUmum = [
     optionA: "Albert Einstein",
     optionB: "Nikola Tesla",
     optionC: "Isaac Newton",
-    optionD: "Thomas Alva Edison",
+    optionD: "Ur Mom",
     correctOption: "optionC",
   },
   {
@@ -254,9 +254,9 @@ const hasilContainer = document.getElementById('hasil-value')
 scoreContainer.innerText = playerScore;
 let jawabanAkhir;
 
-const startingMinutes = 10;
+const startingMinutes = 1;
 let time = startingMinutes * 60;
-
+const myInterval = setInterval(updateCountdown, 1000);
 
 function updateCountdown() {
   const minutes = Math.floor(time / 60);
@@ -267,7 +267,8 @@ function updateCountdown() {
   timerContainer.innerText = `${minutes}:${seconds}`;
   time--;
   if (time < 0) {
-    bukaHasil()
+    clearInterval(myInterval);
+    bukaHasil();
   }
 }
 
@@ -351,8 +352,6 @@ kirimBtn.addEventListener('click', () => {
     for (var i = 0; i < options.length; i++) {
       let answerels = options[i];
       if (answerels.checked == true) {
-        //CHECK TO SEE IF USER HAS SELECTED AN ANSWER
-        //MOVE ON TO NEXT QUESTION
         if (answerels.value == jawabanAkhir) {
           playerScore+=5;
           scoreContainer.innerText = playerScore;
@@ -385,7 +384,6 @@ function tutupModal(){
 function tutupDisclaimer(){
   document.getElementById('disclaimer').style.display = "none";
   document.getElementById('overlay').style.display = "none";
-  setInterval(updateCountdown, 1000)
 }
 
 function tutupHasil(){
@@ -421,10 +419,8 @@ const radioC = document.getElementById('option-three')
 const radioD = document.getElementById('option-four')
 
 
-//display value based on the randomAngle
 const valueGenerator = (angleValue) => {
   for (let i of rotationValues) {
-    //if the angleValue is between min and max then display it
     if (angleValue >= i.minDegree && angleValue <= i.maxDegree) {
       finalValue.innerHTML = `<p>Hasil: ${i.value}</p>`;
       updateSoal()
