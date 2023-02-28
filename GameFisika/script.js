@@ -85,7 +85,7 @@ const pengetahuanUmum = [
     optionA: "Albert Einstein",
     optionB: "Nikola Tesla",
     optionC: "Isaac Newton",
-    optionD: "Ur Mom",
+    optionD: "Thomas Alva Edison",
     correctOption: "optionC",
   },
   {
