@@ -85,7 +85,7 @@ const pengetahuanUmum = [
     optionA: "Albert Einstein",
     optionB: "Nikola Tesla",
     optionC: "Isaac Newton",
-    optionD: "Ur Mom",
+    optionD: "Thomas Alva Edison",
     correctOption: "optionC",
   },
   {
@@ -254,7 +254,7 @@ const hasilContainer = document.getElementById('hasil-value')
 scoreContainer.innerText = playerScore;
 let jawabanAkhir;
 
-const startingMinutes = 1;
+const startingMinutes = 10;
 let time = startingMinutes * 60;
 const myInterval = setInterval(updateCountdown, 1000);
 
